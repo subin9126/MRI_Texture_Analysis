@@ -1,6 +1,7 @@
 % [20/08/10]:
 % - deleted deactivated lines (remains in version 1 though).
 % - minor edits for more convenience in automatic file saving and naming.
+% testing blablah
 
 %++++++++++++++++++++Specify Accordingly+++++++++++++++++++++++++++++++++++
 MAINFolder = '/media/ws1/DATA/TEXTURE_PRD';
