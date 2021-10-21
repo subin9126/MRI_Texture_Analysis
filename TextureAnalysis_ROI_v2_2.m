@@ -11,7 +11,6 @@
 
 %++++++++++++++++++++Specify Accordingly+++++++++++++++++++++++++++++++++++
 clear
-population = 'all'; 
 ROIs = {'amygdala','inferiortemporal','middletemporal', 'superiorparietal', 'supramarginal'};  % ROI folder name of each quantized histnormalized (QHN) ROI image.
 ROIs_short = {'amyg', 'inftmp', 'midtmp', 'suppar', 'supmar'}; 
 
@@ -101,7 +100,7 @@ end
     rundate = datestr(now, 'yymmdd'); 
     runroi = strjoin(ROIs_short, ',');
     
-    workspacename = [pwd '/log_TA_run' rundate '_' population  '_' runroi '.mat'];
+    workspacename = [pwd '/log_TA_run' rundate '_' runroi '.mat'];
     save(workspacename) 
     
     
