@@ -23,7 +23,28 @@ Usage:
 
 Description:
 * Uses quantized ROI T1-weighted images and calculates GLCM texture features for each specified ROI
-* Texture features computed include: Energy, Entropy, Dissimilarity, Contrast, ..., Autocorrelation, ClusterShade, ClusterProminence, ..., [1-4]
+* Texture features computed include [1-4]: 
+   * Energy
+   * Entropy
+   * Dissimilarity
+   * Contrast
+   * Inverse Difference
+   * Correlation
+   * Homogeneity
+   * Autocorrelation
+   * ClusterShade 
+   * ClusterProminence
+   * Maximum Probability
+   * SumOfSquares
+   * SumAverage
+   * SumVariance
+   * SumEntropy
+   * DifferenceVariance
+   * DifferenceEntropy
+   * InformationMeasuresCorrelationI
+   * InformationMeasuresCorrelationII
+   * InverseDifferenceNormalized
+   * InverseDifferenceMomentNormalized
 
 
 ### <b> Acknowledgements </b>
