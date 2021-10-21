@@ -1,3 +1,11 @@
+% About:
+% Code for calculating GLCM texture features from quantized MRI files (output from PreprocessingSteps_v2_2.m).
+% Processes multiple subjects AND multiple ROIs in one run.
+%
+% Input:
+% Specify the name of ROIs to process (can enter multiple ROIs), must match ROI names used from preprocessing code.
+%
+%
 % OUTPUTS:
 % * AllsubjTextureData: structure array containing subjectname and
 %                       texture data of all subjects for each ROI
@@ -11,15 +19,18 @@
 
 %++++++++++++++++++++Specify Accordingly+++++++++++++++++++++++++++++++++++
 clear
-ROIs = {'amygdala','inferiortemporal','middletemporal', 'superiorparietal', 'supramarginal'};  % ROI folder name of each quantized histnormalized (QHN) ROI image.
-ROIs_short = {'amyg', 'inftmp', 'midtmp', 'suppar', 'supmar'}; 
+% Define which ROIs will be processed
+% (ROI names should correspond to those used from preprocessing step).
+ROIs = {'hippocampus','inferiortemporal','middletemporal', 'superiorparietal'};  
+ROIs_short = {'hpc', 'inftmp', 'midtmp', 'suppar'}; 
 
-startidx = 1; %in case of rerunning code starting from a diff subject
+% Define path to quantized ROI images
+QHNDir = '/media/ws1/DATA/TEXTURE_PRD/6_quant';
 
-QHNDir = '/media/ws1/DATA/TEXTURE_PRD/6_quant32';
-
+% Other settings (leave as default unless otherwise)
 numFeatures = 22;
 GLCMGreyLevel = 32;
+startidx = 1; %in case of rerunning code starting from a diff subject
 
 %++++++++++++++++++++Do Not Change Below+++++++++++++++++++++++++++++++++++++++++++++++++++++
 numROIs = length(ROIs);
