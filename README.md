@@ -3,7 +3,7 @@
 Calculate GLCM texture features from FreeSurfer-defined regions-of-interest (ROI) from MRI scans (T1-weigthed images) of multiple subjects.
 Run the following two codes.
 
-<b> 1.  PreprocessingSteps_v2_2.m </b>
+## (1) PreprocessingSteps_v2_2.m
 
 
 Description:
@@ -19,18 +19,18 @@ Usage:
 * Prepare a folder '2_fsmasks' that contains FreeSurfer-derived ROI masks (e.g. wmparc.mgz). Assumes that wmparc.mgz have been transformed to the same subject-space as the T1-weighted images in the '1_nii' folders, and to .nii type (for this, use code -----).
 
 
-<b> 2. TextureAnalysis_ROI_v2_2.m </b>
+## (2) TextureAnalysis_ROI_v2_2.m
 
 Description:
 * Uses quantized ROI T1-weighted images and calculates GLCM texture features for each specified ROI
 * Texture features computed include: Energy, Entropy, Dissimilarity, Contrast, ..., Autocorrelation, ClusterShade, ClusterProminence, ..., [1-4]
 
 
-<b> Acknowledgements </b>
+### <b> Acknowledgements </b>
 
 The GLCMFeature calculation codes were adapted and modified from codes by Avinash Uppuluri [5].
 
-References:
+### References:
 1. R. M. Haralick, K. Shanmugam, and I. Dinstein, Textural Features of Image Classification, IEEE Transactions on Systems, Man and Cybernetics, vol. SMC-3, no. 6, Nov. 1973
 2. L. Soh and C. Tsatsoulis, Texture Analysis of SAR Sea Ice Imagery Using Gray Level Co-Occurrence Matrices, IEEE Transactions on Geoscience and Remote Sensing, vol. 37, no. 2, March 1999.
 3. D A. Clausi, An analysis of co-occurrence texture statistics as a function of grey level quantization, Can. J. Remote Sensing, vol. 28, no.1, pp. 45-62, 2002.
