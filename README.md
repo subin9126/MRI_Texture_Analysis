@@ -1,4 +1,4 @@
-# TextureAnalysis
+# MRI Texture Analysis
 
 Calculate GLCM texture features from FreeSurfer-defined regions-of-interest (ROI) from MRI scans (T1-weigthed images) of multiple subjects.
 Run the following two codes.
