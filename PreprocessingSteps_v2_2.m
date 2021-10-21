@@ -215,7 +215,7 @@ end
 
 %---------------------------------------------------
 % Put it all together and save:
-if DO_COLLEWETNORMALIZE == 1 && if DO_INTNORMALIZE == 1
+if DO_COLLEWETNORMALIZE == 1 && DO_INTNORMALIZE == 1
 
     varnames = {['origmin_' ROIname_short], ['origavg_' ROIname_short], ['origmax_' ROIname_short] ...
                ['theoretmin_' ROIname_short], ['theoretmax_' ROIname_short] ...
