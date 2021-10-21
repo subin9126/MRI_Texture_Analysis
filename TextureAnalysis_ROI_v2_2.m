@@ -5,17 +5,12 @@
 % Input:
 % Specify the name of ROIs to process (can enter multiple ROIs), must match ROI names used from preprocessing code.
 %
-%
-% OUTPUTS:
-% * AllsubjTextureData: structure array containing subjectname and
-%                       texture data of all subjects for each ROI
-%
-% * GLCM files:  .mat files of each region created in GLCMS folder per subject (average of all 13 GLCMs)
-%
-% * AllsubjTextureData_combined:  concatenated table format of AllsubjTextureData with variable names! 
-%                                 USE THIS*** 
-% * '/log_TA_run<yymmdd>_<population>_<runroi>.mat':  log of texture analysis run on date yymmdd on rois
-                                                  
+% Output:
+% 'AllsubjTextureData_combined' - n-by-m table which contains GLCM texture values from each ROI (m) for all subjects (n).
+% 'AllsubjTextureData'          - structure array containing subjectname and texture data of all subjects for each ROI
+% 'log_TA_run<date>_<ROIs>.mat' - workspace that saves outputs from current run.
+%  GLCM files:  .mat files of each region created in GLCMS folder per subject (average of all 13 GLCMs)
+                                             
 
 %++++++++++++++++++++Specify Accordingly+++++++++++++++++++++++++++++++++++
 clear
