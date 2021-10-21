@@ -1,9 +1,14 @@
-% [20/08/10]:
-% - deleted deactivated lines (remains in version 1 though).
-% - minor edits for more convenience in automatic file saving and naming.
-% testing blablah
+% About:
+% Run for multiple subjects, one ROI at a time.
+%
+%
+%
+%
+%
+%
 
 %++++++++++++++++++++Specify Accordingly+++++++++++++++++++++++++++++++++++
+% Define paths to files
 MAINFolder = '/media/ws1/DATA/TEXTURE_PRD';
 T1Folder =           [MAINFolder '/1_nii'];
 FSMaskFolder =       [MAINFolder '/2_fsmasks']; 
@@ -12,25 +17,24 @@ CollewetFolder =     [MAINFolder '/4_collewet'];
 IntNormFolder =      [MAINFolder '/5_intnorm'];
 QuantizedFolder =    [MAINFolder '/6_quant']; 
 
-ROIname = 'superiorparietal';
-                % hippocampus / precuneus / isthmuscingulate
-                % amygdala / inferiortemporal / middletemporal
-                % superiorparietal / supramarginal 
-ROIname_short = 'suppar';
-                % hpc / prc / isth /amyg / inftmp / midtmp / suppar / supmar
-                
-ROI = [1029 2029];
-                % FreeSurfer aparc+aseg labels:
-                % hpc: 17 53   / prc: 1025 2025     / isth: 1010 2010
-                % amyg: 18 54  / inftmp: 1009 2009  / midtmp: 1015 2015
-                % suppar: 1029 2029 / supmar: 1031 2031  
+% Define which ROI will be processed:
+ROIname = 'hippocampus'; 
+                % string for user-defined ROI full name
 
+ROIname_short = 'hpc';
+                % string for user-defined ROI name short-verison
+                
+ROI = [17 53];
+                % vector containing FreeSurfer aparc+aseg labels of ROI to run:
+                
+% Define what steps to run (0 for don't and 1 for do):
 DO_MASKING = 1;
 DO_COLLEWETNORMALIZE= 1; 
 DO_INTNORMALIZE = 1; %0=no 1=do 9=already did so skip
-    Ref_ROILabel = [4 43]; %Lateral Ventricles (-32715 -32112 for weird)
+    Ref_ROILabel = [4 43]; %Lateral Ventricles default
 DO_QUANTIZE = 1;
     QuantLevel = 32;
+ 
  
 %++++++++++++++++++++Do Not Change Below+++++++++++++++++++++++++++++++++++++++++++++++++++++   
 ROIMasked_T1Folder = [ROIMasked_T1Folder '/' ROIname];
@@ -52,7 +56,7 @@ if exist(QuantizedFolder, 'dir')==0
 end
 
 
-%-----
+%---------------------------------------------------
 if DO_MASKING == 1
     T1Files = dir(fullfile(T1Folder, '*.nii'));
     FSMaskFiles = dir(fullfile(FSMaskFolder, '*.nii'));
@@ -84,7 +88,7 @@ if DO_MASKING == 1
     end
 end
 
-%-----
+%---------------------------------------------------
 if DO_COLLEWETNORMALIZE == 1
     ROIMasked_T1Files = dir(fullfile(ROIMasked_T1Folder, '*.nii'));
     FSMaskFiles = dir(fullfile(FSMaskFolder, '*.nii'));
@@ -126,7 +130,7 @@ if DO_COLLEWETNORMALIZE == 1
 end
 
 
-%-----
+%---------------------------------------------------
 if DO_INTNORMALIZE == 1
     
     CollewetFiles = dir(fullfile(CollewetFolder, '*.nii'));
@@ -165,7 +169,7 @@ end
 
 
 
-%-----
+%---------------------------------------------------
 if DO_QUANTIZE == 1
     
     if DO_INTNORMALIZE==0
@@ -195,7 +199,7 @@ if DO_QUANTIZE == 1
     end
 end
 
-%-----
+%---------------------------------------------------
 % Put it all together and save:
 
 varnames = {['origmin_' ROIname_short], ['origavg_' ROIname_short], ['origmax_' ROIname_short] ...
@@ -213,6 +217,6 @@ rundate = datestr(now, 'yymmdd');
 workspacename = [pwd '/log_prep_run' rundate '_' ROIname '.mat'];
 save(workspacename)
         
-        
+%---------------------------------------------------        
         
       
