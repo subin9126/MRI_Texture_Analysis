@@ -24,7 +24,7 @@ QHNDir = '/media/ws1/DATA/TEXTURE_PRD/6_quant';
 
 % Other settings (leave as default unless otherwise)
 numFeatures = 22;
-GLCMGreyLevel = 32;
+QuantLevel = 32;
 startidx = 1; %in case of rerunning code starting from a diff subject
 
 %++++++++++++++++++++Do Not Change Below+++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -68,7 +68,7 @@ end
             ROIMask = (ROIQHNImage.img>0);                                  
             
             % 2. Texture Analysis 
-            [FeatureVector, GLCMatrix] = GLCMFeature_181103(QuantROIGM, ROIMask, GLCMGreyLevel);  
+            [FeatureVector, GLCMatrix] = GLCMFeature_181103(QuantROIGM, ROIMask, QuantLevel);  
             % 2.1 Save subjectname and texture data
             AllsubjTextureData.(fields{m})(idxFile,:) = transpose(FeatureVector);  
             AllsubjTextureData.(fields{numROIs+1}){idxFile} = extractfrom(ROIQHNFiles(idxFile).name,'_T1',15,-3); 
