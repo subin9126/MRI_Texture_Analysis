@@ -12,7 +12,6 @@ CollewetFolder =     [MAINFolder '/4_collewet'];
 IntNormFolder =      [MAINFolder '/5_intnorm'];
 QuantizedFolder =    [MAINFolder '/6_quant']; 
 
-population = 'all';
 ROIname = 'superiorparietal';
                 % hippocampus / precuneus / isthmuscingulate
                 % amygdala / inferiortemporal / middletemporal
@@ -211,7 +210,7 @@ All_PreprocessingStatsROI = array2table(data, 'VariableNames', varnames);
 
 rundate = datestr(now, 'yymmdd');
 
-workspacename = [pwd '/log_prep_run' rundate '_' population '_' ROIname '.mat'];
+workspacename = [pwd '/log_prep_run' rundate '_' ROIname '.mat'];
 save(workspacename)
         
         
