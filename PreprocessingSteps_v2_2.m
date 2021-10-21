@@ -1,11 +1,25 @@
 % About:
-% Run for multiple subjects, one ROI at a time.
+% Code for preprocessing MRI scans for texture analysis.
+% Run for multiple subjects, one ROI at a time (example: hippocampus).
+% Default is to run all step at once. 
+% Steps can be run individually, but note that each step requires output from previous step.
 %
+% Input:
+% Specify directory where files are.
+% Specify the name of ROI (user-define) and FreeSurfer label corresponding to that ROI (reference FreeSurfer LookUp Table)
 %
+% Output:
+% Masking step 
+%   - a nifti file that contains MRI intensities in ROI only
+% 
+% CollewetNormalize step and IntensityNormalize step
+%   - a nifti file that contains MRI intensities in ROI that are between -3 and +3 standard deviations range from mean intensity.
+%   - a nifti file that contains MRI intensities in ROI that are successively normalized to mean CSF intensity (default is lateral ventricles).
+%   - a table 'All_PreprocessingStatsROI' that summarizes original and processed intensity values of ROI.
+%   - a workspace 'log_prep_run_<date>_<ROI>.mat' that saves this table and other variables.
 %
-%
-%
-%
+% Quantize step
+%   - a nifti file that contains MRI intensities in ROI that are successively quantized to specified quantization level (default is 32).
 
 %++++++++++++++++++++Specify Accordingly+++++++++++++++++++++++++++++++++++
 % Define paths to files
@@ -25,7 +39,7 @@ ROIname_short = 'hpc';
                 % string for user-defined ROI name short-verison
                 
 ROI = [17 53];
-                % vector containing FreeSurfer aparc+aseg labels of ROI to run:
+                % vector containing FreeSurfer-defined labels of ROI (example is from aparc+aseg.mgz):
                 
 % Define what steps to run (0 for don't and 1 for do):
 DO_MASKING = 1;
@@ -201,22 +215,24 @@ end
 
 %---------------------------------------------------
 % Put it all together and save:
+if DO_COLLEWETNORMALIZE == 1 && if DO_INTNORMALIZE == 1
 
-varnames = {['origmin_' ROIname_short], ['origavg_' ROIname_short], ['origmax_' ROIname_short] ...
-            ['theoretmin_' ROIname_short], ['theoretmax_' ROIname_short] ...
-            ['colmin_' ROIname_short], ['colavg_' ROIname_short], ['colmax_' ROIname_short] ...
-            ['inmin_' ROIname_short], ['inavg_' ROIname_short], ['inmax_' ROIname_short] ...
-            };
+    varnames = {['origmin_' ROIname_short], ['origavg_' ROIname_short], ['origmax_' ROIname_short] ...
+               ['theoretmin_' ROIname_short], ['theoretmax_' ROIname_short] ...
+                ['colmin_' ROIname_short], ['colavg_' ROIname_short], ['colmax_' ROIname_short] ...
+               ['inmin_' ROIname_short], ['inavg_' ROIname_short], ['inmax_' ROIname_short] ...
+                };
 
-data = [All_orig_stats All_theoretical_stats All_collewetnorm_stats All_intnorm_stats];
+    data = [All_orig_stats All_theoretical_stats All_collewetnorm_stats All_intnorm_stats];
 
-All_PreprocessingStatsROI = array2table(data, 'VariableNames', varnames);
+    All_PreprocessingStatsROI = array2table(data, 'VariableNames', varnames);
 
-rundate = datestr(now, 'yymmdd');
+    rundate = datestr(now, 'yymmdd');
 
-workspacename = [pwd '/log_prep_run' rundate '_' ROIname '.mat'];
-save(workspacename)
-        
+    workspacename = [pwd '/log_prep_run' rundate '_' ROIname '.mat'];
+    save(workspacename)
+end
+    
 %---------------------------------------------------        
         
       
