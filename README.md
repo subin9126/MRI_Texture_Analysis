@@ -1,10 +1,17 @@
 # MRI Texture Analysis
 
-Calculate GLCM texture features from FreeSurfer-defined regions-of-interest (ROI) from MRI scans (T1-weigthed images) of multiple subjects.
-Run the following two codes.
+## Overview
+3D grey-level co-occurence matrices(GLCM) can be computed from a region-of-interest (ROI) on a magnetic resonance image (MRI) to investigate the spatial variation in intensities (texture) in that region.
+Below is a schematic for calculating GLCM-based texture features from a hippocampus from a T1-weighted MRI.
 
-## (1) PreprocessingSteps_v2_2.m
+![git_fig_glcm intro](https://user-images.githubusercontent.com/46069735/138247041-098dad07-b393-465e-85e6-96671a81b443.PNG)
 
+
+
+## Directions
+To calculate GLCM texture features from FreeSurfer-defined regions-of-interest (ROI) from MRI scans (T1-weigthed images) of multiple subjects, run the following two codes.
+
+### (1) PreprocessingSteps_v2_2.m
 
 Description:
 * Performs preprocessing of T1-weighted image for texture analysis
@@ -19,7 +26,7 @@ Usage:
 * Prepare a folder '2_fsmasks' that contains FreeSurfer-derived ROI masks (e.g. wmparc.mgz). Assumes that wmparc.mgz have been transformed to the same subject-space as the T1-weighted images in the '1_nii' folders, and to .nii type (for this, use code -----).
 
 
-## (2) TextureAnalysis_ROI_v2_2.m
+### (2) TextureAnalysis_ROI_v2_2.m
 
 Description:
 * Uses quantized ROI T1-weighted images and calculates GLCM texture features for each specified ROI
