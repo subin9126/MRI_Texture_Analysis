@@ -12,6 +12,8 @@ function [IntNorm_Image, Ref_meanintensity, intnorm_stats] = IntensityNormalize(
 % Output
 % IntNorm_Image: a 3D matrix; no struct; ROIImage_to_normalize that has been divided by average intensity of Ref_ROILabel voxels in Ref_Image.
 % Ref_meanintensity: average intensity of Ref_ROILabel voxels in Ref_Image.
+%
+% [Subin Lee: subin9126@hotmail.com]
 
 %After I deactivated this class-change part, the INTNORM files started
 %coming out appropriately....
