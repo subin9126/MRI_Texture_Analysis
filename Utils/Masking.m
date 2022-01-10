@@ -8,6 +8,8 @@ function [MaskedImage] = Masking(Image, Mask)
 %
 % Output
 % MaskedImage: a 3D matrix; no struct variable. (ex. GMMasked_SubjectT2.img)
+%
+% [Subin Lee: subin9126@hotmail.com]
 
     % Check if Mask is binary:
     mask_values = unique(Mask);
