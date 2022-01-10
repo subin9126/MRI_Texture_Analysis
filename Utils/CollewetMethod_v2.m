@@ -19,6 +19,8 @@ function [collewetnorm_ROI, orig_stats, theoreticalrange_stats, collewetnorm_sta
 % orig_stats:              a 1x3 vector; min, mean, max of original intensity of Image
 % theoretical_range_stats: a 1x2 vector; min, max of theoretical range based on Image's -3 SD~3 SD range.
 % collewetnorm_stats:      a 1x3 vector; min, mean, max of collewet-normed intensity of Image
+%
+% [Subin Lee: subin9126@hotmail.com]
     
     % 0. Binarized ROImask
     ROIMask(~ismember(ROIMask, ROI)) = 0;
