@@ -10,6 +10,8 @@ function [QuantizedImg, max_value] = Quantization(ROIImage, QuantLevel)
 % Output
 % QuantizedImg: a 3D matrix; no struct variable. Quantized image.
 % max_value:    max value of QuantizedImg, just to keep records.
+%
+% [Subin Lee: subin9126@hotmail.com]
 
     % Find ROI voxels to quantize:
     ROIImgValues = ROIImage(ROIImage>0);
